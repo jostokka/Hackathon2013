@@ -10,5 +10,15 @@ $( document ).ready(function() {
       {username: "allison", firstName: "Allison", lastName: "House", email: "allison@test.com" },
       {username: "ryan", firstName: "Ryan", lastName: "Carson", email: "ryan@test.com" }
     ]};
-  $("#content").html(template(data));
+  //$("#content").html(template(data));
+
+    screentime.init({
+        startButton : "button#start",
+        stopButton : "button#stop",
+        progressBar : "div#timerFiller",
+        progressOvertimeBar : "div#overtimerbar",
+        timerObj: "#timer",
+        seconds: 5
+        });
+
 });

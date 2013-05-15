@@ -63,4 +63,38 @@
         </div>
         
       </script>
+
+    <script id="timer-layout" type="text/x-handlebars-template">
+        <div class="span12">
+            <div class="row-fluid">
+                <h1 id="timer">00:00:00</h1>
+
+                <div id="timerbar" class="timerbar">
+                    <div id="timerFiller" class="fillerbar">&nbsp;</div>
+                </div>
+
+                <div id="overtime" style="display: none;">
+                    <h1>Overtime</h1>
+                </div>
+
+                <button name="startTimer" id="start" style="display: none;" class="btn btn-success btn-large btn-block">Start</button>
+                <button name="stopTimer" id="stop" style="display: none;" class="btn btn-danger btn-large btn-block">Stop</button>
+
+            </div>
+        </div>
+    </script>
+
+    <script id="overtime-layout" type="text/x-handlebars-template">
+        <div class="span12 warning">
+            <div class="row-fluid">
+
+                <h1>Overtime</h1>
+
+                <button name="startTimer" id="start" style="display: none;" class="btn btn-success btn-large btn-block">Start</button>
+                <button name="stopTimer" id="stop" class="btn btn-danger btn-large btn-block">Stop</button>
+
+            </div>
+        </div>
+    </script>
 #{/set}
+
