@@ -16,7 +16,7 @@
 		</style>
 			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
 
-		<link href="@{'/public/assets/css/screentimer.css'}" rel="stylesheet">
+		<link href="@{'/public/assets/css/screentime.css'}" rel="stylesheet">
 
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
@@ -45,17 +45,16 @@
 			 <div data-role="content" id="content">
 				#{doLayout /}
 			 </div>
-			 <div data-theme="a" data-role="footer" data-position="fixed" id="footer">
-					<div data-role="navbar" data-iconpos="top">
-						 <ul>
-							  <li><a href="#" template="template_" class="ui-btn-active" data-icon="star">One</a></li>
-							  <li><a href="#" data-icon="star">Two</a></li>
-						 </ul>
-					</div><!-- /navbar -->
-			  </div>
-		</div>	
-				
 
+			 <div data-theme="a" data-role="footer" data-position="fixed" id="footer">
+                 <div data-role="navbar" data-iconpos="top">
+                     <ul>
+                         <li><a href="#" class="ui-btn-active" data-icon="star">My account</a></li>
+                         <li><a href="#" data-icon="star">My timer</a></li>
+                     </ul>
+                 </div><!-- /navbar -->
+             </div>
+			</div>	
 
 			<!-- Le javascript
 			================================================== -->
