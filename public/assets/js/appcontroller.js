@@ -9,12 +9,19 @@
 			self.options = $.extend({}, $.fn.appController.options, options);
 			self.templates = {};
 			$(self.options.canvas).html(self.loadTemplate('template-register')({}));
+			
+			$("#btnReg").on('click', function() {
+				var tmplate = self.loadTemplate('template-welcome');
+				$(self.options.canvas).html(tmplate({name:'Father'}));
+				return false
+			}); 
+			
 			self.$elem.find('li a').each(function(index, a) {
 				$.data(a, 'appController', self);
 				console.log('init menu ' + a);
 				$(a).on('click', function() {
-					
-					return $(this).appController('loadContent', $(this).attr('template'));
+					$(this).appController('loadContent', $(this).attr('template'));
+					return false;
 				}); 
 			});
 			
@@ -34,6 +41,7 @@
 		},
 
 		loadContent : function(template) {
+ console.log('loadtemplate'+template)
 			var self = this;
 			$(self.options.canvas).html(self.loadTemplate(template)({}));
 		},
