@@ -7,13 +7,9 @@
 			self.$elem = $(elem);
 			self.guid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx".replace(/x/g, function() {return Math.floor(Math.random()*16).toString(16).toUpperCase();});
 			self.options = $.extend({}, $.fn.appController.options, options);
-			// load handlebar templates
-			var source   = $("#template-app-home").html();
-			self.template_app_home = Handlebars.compile(source);
-
-			$(self.options.canvas).html(self.template_app_home({}));
+			self.templates = {};
+			$(self.options.canvas).html(self.loadTemplate('template-register')({}));
 			self.$elem.find('li a').each(function(index, a) {
-				console.log($(a).html())
 				$.data(a, 'appController', self);
 				$(a).on('click', function() {
 					return $(this).appController('loadContent', $(this).attr('template'));
@@ -24,12 +20,15 @@
 			//});
 		},
 
-      loadContent : function(template) {
+		loadTemplate : function(template) {
 			var self = this;
+			if (self.templates[template]) {
+				return self.templates[template];
+			}
 			var source   = $("#"+template).html();
 			var tmplate = Handlebars.compile(source);
-			$(self.options.canvas).html(tmplate({}));
-			return false;
+			self.templates[template] = tmplate;
+			return tmplate;
 		},
 
 		fetch: function() {

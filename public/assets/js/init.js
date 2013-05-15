@@ -4,7 +4,7 @@
  */
 $( document ).ready(function() {
 
-  jQuery('ul.nav').appController({
+  jQuery('#footer ul').appController({
 		
 	});
 
