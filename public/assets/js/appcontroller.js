@@ -1,14 +1,13 @@
 (function($, window, document, undefined){
 	var AppController = {
 		init: function(options, elem) {
-			console.log('aappcontroller'+this)
+			console.log('appcontroller')
 			var self = this;
 			self.elem = elem;
 			self.$elem = $(elem);
 			self.guid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx".replace(/x/g, function() {return Math.floor(Math.random()*16).toString(16).toUpperCase();});
 			self.options = $.extend({}, $.fn.appController.options, options);
 			self.templates = {};
-         console.log(123);
 			$(self.options.canvas).html(self.loadTemplate('template-startreg')({}));
 			
 			$("#btnReg").on('click', function() {
