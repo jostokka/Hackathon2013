@@ -1,14 +1,15 @@
 (function($, window, document, undefined){
 	var AppController = {
 		init: function(options, elem) {
-			console.log('appcontroller')
+			console.log('aappcontroller'+this)
 			var self = this;
 			self.elem = elem;
 			self.$elem = $(elem);
 			self.guid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx".replace(/x/g, function() {return Math.floor(Math.random()*16).toString(16).toUpperCase();});
 			self.options = $.extend({}, $.fn.appController.options, options);
 			self.templates = {};
-			$(self.options.canvas).html(self.loadTemplate('template-register')({}));
+         console.log(123);
+			$(self.options.canvas).html(self.loadTemplate('template-startreg')({}));
 			
 			$("#btnReg").on('click', function() {
 				var tmplate = self.loadTemplate('template-welcome');
@@ -30,6 +31,7 @@
 		},
 
 		loadTemplate : function(template) {
+         console.log("loading"+template)
 			var self = this;
 			if (self.templates[template]) {
 				return self.templates[template];
