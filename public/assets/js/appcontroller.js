@@ -11,7 +11,9 @@
 			$(self.options.canvas).html(self.loadTemplate('template-register')({}));
 			self.$elem.find('li a').each(function(index, a) {
 				$.data(a, 'appController', self);
+				console.log('init menu ' + a);
 				$(a).on('click', function() {
+					
 					return $(this).appController('loadContent', $(this).attr('template'));
 				}); 
 			});
@@ -29,6 +31,11 @@
 			var tmplate = Handlebars.compile(source);
 			self.templates[template] = tmplate;
 			return tmplate;
+		},
+
+		loadContent : function(template) {
+			var self = this;
+			$(self.options.canvas).html(self.loadTemplate(template)({}));
 		},
 
 		fetch: function() {
