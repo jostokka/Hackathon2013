@@ -18,11 +18,13 @@
 				$(self.options.canvas).html(self.loadTemplate('template-startreg')({}));
 				$("#btnLogin").on('click', function() {
 					$(self.options.canvas).html(self.loadTemplate('template-register')({}));
-					$(self.options.canvas).trigger('create');
+					console.log('123')
 					$("#btnReg").on('click', function() {
+						console.log('sdfgdfdfg')
 						self.login($("#useremail").val(), $("#userpassword").val());
 						return false
-					}); 
+					});
+					$(self.options.canvas).trigger('create');
 					return false
 				});
 				
@@ -65,10 +67,12 @@
 
 		login: function(email, password) {
 			var self = this;
+			console.log('login');
 			self.fetch('/login',{'email': email, 'password':password}).done(function(result){
 				console.log(result.status);
 				if (result.status == 'ok') {
 					$(self.options.canvas).html(self.loadTemplate('template-welcome')({name:result.name}));
+					$(self.options.canvas).trigger('create');
 					$("#btnLogout").on('click', function() {
 						self.logout();
 						return false
