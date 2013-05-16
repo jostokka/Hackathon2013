@@ -13,14 +13,19 @@
 				$("#btnLogout").on('click', function() {
 					self.logout();
 					return false
-				}); 
-
+				});
 			} else {
-				$(self.options.canvas).html(self.loadTemplate('template-register')({}));
-				$("#btnReg").on('click', function() {
-					self.login($("#useremail").val(), $("#userpassword").val());
+				$(self.options.canvas).html(self.loadTemplate('template-startreg')({}));
+				$("#btnLogin").on('click', function() {
+					$(self.options.canvas).html(self.loadTemplate('template-register')({}));
+					$("#btnReg").on('click', function() {
+						self.login($("#useremail").val(), $("#userpassword").val());
+						return false
+					}); 
 					return false
-				}); 
+				});
+				
+				
 			}
 			
 			
@@ -60,6 +65,10 @@
 				console.log(result.status);
 				if (result.status == 'ok') {
 					$(self.options.canvas).html(self.loadTemplate('template-welcome')({name:result.name}));
+					$("#btnLogout").on('click', function() {
+						self.logout();
+						return false
+					});
 				} else {
 					
 				}
@@ -72,7 +81,15 @@
 				console.log(result.status);
 				self.options.userid = -1;
 				if (result.status == 'ok') {
-					$(self.options.canvas).html(self.loadTemplate('template-register')({}));
+					$(self.options.canvas).html(self.loadTemplate('template-startreg')({}));
+					$("#btnLogin").on('click', function() {
+						$(self.options.canvas).html(self.loadTemplate('template-register')({}));
+						$("#btnReg").on('click', function() {
+							self.login($("#useremail").val(), $("#userpassword").val());
+							return false
+						}); 
+						return false
+					});
 				} else {
 					
 				}
