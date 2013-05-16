@@ -18,13 +18,12 @@
 				$(self.options.canvas).html(self.loadTemplate('template-startreg')({}));
 				$("#btnLogin").on('click', function() {
 					$(self.options.canvas).html(self.loadTemplate('template-register')({}));
-					console.log('123')
+					$(self.options.canvas).trigger('create');
 					$("#btnReg").on('click', function() {
-						console.log('sdfgdfdfg')
 						self.login($("#useremail").val(), $("#userpassword").val());
 						return false
 					});
-					$(self.options.canvas).trigger('create');
+					
 					return false
 				});
 				
@@ -90,8 +89,10 @@
 				self.options.userid = -1;
 				if (result.status == 'ok') {
 					$(self.options.canvas).html(self.loadTemplate('template-startreg')({}));
+					$(self.options.canvas).trigger('create');
 					$("#btnLogin").on('click', function() {
 						$(self.options.canvas).html(self.loadTemplate('template-register')({}));
+						$(self.options.canvas).trigger('create');
 						$("#btnReg").on('click', function() {
 							self.login($("#useremail").val(), $("#userpassword").val());
 							return false
