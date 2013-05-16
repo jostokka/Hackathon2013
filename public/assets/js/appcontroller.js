@@ -12,17 +12,14 @@
 			if (self.options.userid > 0) {
 				$(self.options.canvas).html(self.loadTemplate('template-welcome')({}));
                 screentime.init({
-                    startButton : "button#start",
-                    stopButton : "button#stop",
+                    startButton : "#start",
+                    stopButton : "#stop",
                     progressBar : "div#timerFiller",
                     progressOvertimeBar : "div#overtimerbar",
                     timerObj: "#timer",
-                    seconds: 600
+                    seconds: 6
                 });
-				$("#btnLogout").on('click', function() {
-					self.logout();
-					return false
-				});
+				
 			} else {
 				$(self.options.canvas).html(self.loadTemplate('template-startreg')({}));
 				$("#btnLogin").on('click', function() {
@@ -35,7 +32,7 @@
 					
 					return false
 				});
-				
+
 				
 			}
 			
@@ -52,7 +49,10 @@
 			//self.fetch().done(function(results){
 			//});
 			$(self.options.canvas).trigger('create');
-			
+							$("#logo").on('click', function() {
+					self.logout();
+					return false
+				});
 		},
 
 		loadTemplate : function(template) {

@@ -36,15 +36,16 @@
     <div id="timerbar" class="timerbar">
         <div id="timerFiller" class="fillerbar">&nbsp;</div>
     </div>
-    <button name="startTimer" id="start" style="display: none;" class="btn btn-success btn-large btn-block">Start</button>
-    <button name="stopTimer" id="stop" style="display: none;" class="btn btn-danger btn-large btn-block">Stop</button>
+	 <a id="start" data-role="button" href="#page1" class="btn">
+      Start
+    </a> 
+	 <a id="stop" data-role="button" href="#page1" class="btn">
+      Stop
+    </a>
 </script>
 
 <script id="template-welcome" type="text/x-handlebars-template">
 	{{> template-app-timer}}
-	<a id="btnLogout" data-role="button" href="#page1" class="btn">
-      Log out
-   </a>
 </script>
 
 <script id="template-startreg" type="text/x-handlebars-template">

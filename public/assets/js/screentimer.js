@@ -17,12 +17,12 @@ var screentime = (function() {
         currentSecondsLeft = settings.seconds;
         updateDestintion(totalSeconds);
 
-        var source   = $("#timer-layout").html();
-        var button_template = Handlebars.compile(source);
-        source   = $("#overtime-layout").html();
-        test_template = Handlebars.compile(source);
+        //var source   = $("#timer-layout").html();
+        //var button_template = Handlebars.compile(source);
+        //source   = $("#overtime-layout").html();
+        //test_template = Handlebars.compile(source);
 
-        $("#content").html(button_template({}));
+        //$("#content").html(button_template({}));
 
         $(oSettings.startButton).show();
         $(settings.startButton).click(function() {
@@ -140,7 +140,7 @@ var screentime = (function() {
 
         if (!warningSounded) {
             console.log("Play sound");
-            $('<embed hidden="true" autoplay="true" loop="false" id="chatAudio" src="/sound/warning.mp3"></embed>').appendTo('body');
+            $('<embed hidden="true" autoplay="true" loop="false" id="chatAudio" src="/public/assets/media/warning.mp3"></embed>').appendTo('body');
             warningSounded = true;
         }
 
