@@ -46,3 +46,23 @@
        Register new family
    </a> 
 </script>
+
+
+<script id="template-app-timer" type="text/x-handlebars-template">
+    <h1 id="timer">00:10:00</h1>
+    <div id="timerbar" class="timerbar">
+        <div id="timerFiller" class="fillerbar">&nbsp;</div>
+    </div>
+    <button name="startTimer" id="start" style="display: none;" class="btn btn-success btn-large btn-block">Start</button>
+    <button name="stopTimer" id="stop" style="display: none;" class="btn btn-danger btn-large btn-block">Stop</button>
+    <script>
+        screentime.init({
+        startButton : "button#start",
+        stopButton : "button#stop",
+        progressBar : "div#timerFiller",
+        progressOvertimeBar : "div#overtimerbar",
+        timerObj: "#timer",
+        seconds: 600
+        });
+    </script>
+</script>
