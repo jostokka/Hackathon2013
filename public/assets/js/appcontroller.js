@@ -11,6 +11,14 @@
 			Handlebars.registerPartial("template-app-timer", $("#template-app-timer").html());
 			if (self.options.userid > 0) {
 				$(self.options.canvas).html(self.loadTemplate('template-welcome')({}));
+                screentime.init({
+                    startButton : "button#start",
+                    stopButton : "button#stop",
+                    progressBar : "div#timerFiller",
+                    progressOvertimeBar : "div#overtimerbar",
+                    timerObj: "#timer",
+                    seconds: 600
+                });
 				$("#btnLogout").on('click', function() {
 					self.logout();
 					return false
@@ -63,6 +71,16 @@
 			var self = this;
 			$(self.options.canvas).html(self.loadTemplate(template)({}));
 			$(self.options.canvas).trigger('create');
+            if (template == 'template-app-trigger')        {
+                screentime.init({
+                    startButton : "button#start",
+                    stopButton : "button#stop",
+                    progressBar : "div#timerFiller",
+                    progressOvertimeBar : "div#overtimerbar",
+                    timerObj: "#timer",
+                    seconds: 600
+                });
+            }
 		},
 
 		login: function(email, password) {
