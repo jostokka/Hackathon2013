@@ -1,3 +1,6 @@
+<script>
+ var userid = #{if connected}${connected.id}#{/if} #{else}-1#{/else} 		
+</script>
 <script id="template-app-home" type="text/x-handlebars-template">
 	Hjem
 </script>
@@ -15,17 +18,18 @@
 		<label for="textinput1">
 			 Admin user
 		</label>
-		<input name="" id="textinput1" placeholder="Username" value="" type="text">
+		<input name="" id="useremail" placeholder="Username" value="" type="text">
 	</div>
 	<div data-role="fieldcontain">
 		<label for="textinput2">
 			 Password
 		</label>
-		<input name="" id="textinput2" placeholder="Password" value="" type="text">
+		<input name="" id="userpassword" placeholder="Password" value="" type="text">
 	</div>
 	<input id="btnReg" type="submit" value="Register" class="btn">
 </script>
 
 <script id="template-welcome" type="text/x-handlebars-template">
 	Welcome {{name}}
+	<input id="btnLogout" type="submit" value="Logout" class="btn">
 </script>

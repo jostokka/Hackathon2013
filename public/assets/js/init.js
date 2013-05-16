@@ -5,7 +5,7 @@
 $( document ).ready(function() {
 
   jQuery('#footer ul').appController({
-		
+		userid: userid
   });
 
 /*

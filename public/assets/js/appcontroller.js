@@ -8,13 +8,21 @@
 			self.guid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx".replace(/x/g, function() {return Math.floor(Math.random()*16).toString(16).toUpperCase();});
 			self.options = $.extend({}, $.fn.appController.options, options);
 			self.templates = {};
-			$(self.options.canvas).html(self.loadTemplate('template-register')({}));
+			if (self.options.userid > 0) {
+				$(self.options.canvas).html(self.loadTemplate('template-welcome')({}));
+				$("#btnLogout").on('click', function() {
+					self.logout();
+					return false
+				}); 
+
+			} else {
+				$(self.options.canvas).html(self.loadTemplate('template-register')({}));
+				$("#btnReg").on('click', function() {
+					self.login($("#useremail").val(), $("#userpassword").val());
+					return false
+				}); 
+			}
 			
-			$("#btnReg").on('click', function() {
-				var tmplate = self.loadTemplate('template-welcome');
-				$(self.options.canvas).html(tmplate({name:'Father'}));
-				return false
-			}); 
 			
 			self.$elem.find('li a').each(function(index, a) {
 				$.data(a, 'appController', self);
@@ -41,15 +49,40 @@
 		},
 
 		loadContent : function(template) {
- console.log('loadtemplate'+template)
 			var self = this;
 			$(self.options.canvas).html(self.loadTemplate(template)({}));
 		},
 
-		fetch: function() {
+		login: function(email, password) {
+			var self = this;
+			self.fetch('/login',{'email': email, 'password':password}).done(function(result){
+				console.log(result.status);
+				if (result.status == 'ok') {
+					$(self.options.canvas).html(self.loadTemplate('template-welcome')({name:result.name}));
+				} else {
+					
+				}
+			});
+		},
+
+		logout: function() {
+			var self = this;
+			self.fetch('/logout',{}).done(function(result){
+				console.log(result.status);
+				self.options.userid = -1;
+				if (result.status == 'ok') {
+					$(self.options.canvas).html(self.loadTemplate('template-register')({}));
+				} else {
+					
+				}
+			});
+		},
+
+		fetch: function(url, data) {
 			return $.ajax({
-				url: this.assembleUrl(),
-				data: {},
+				url: url,
+				type: 'post',
+				data: data,
 				dataType: 'json'
 			});
 		},
@@ -78,7 +111,8 @@
     
 	$.fn.appController.options = {
 		url: '/rest/',
-		canvas: '#content'
+		canvas: '#content',
+		userid: -1
 	};
 })(jQuery, window, document);
 
