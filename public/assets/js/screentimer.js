@@ -19,8 +19,8 @@ var screentime = (function() {
 
         //var source   = $("#timer-layout").html();
         //var button_template = Handlebars.compile(source);
-        //source   = $("#overtime-layout").html();
-        //test_template = Handlebars.compile(source);
+        var source   = $("#overtime-layout").html();
+        test_template = Handlebars.compile(source);
 
         //$("#content").html(button_template({}));
 
@@ -98,7 +98,7 @@ var screentime = (function() {
         overtimeRunning = true;
         doOvertimeRun();
         $("#content").html(test_template());
-
+			$("#content").trigger('create');
         $(oSettings.stopButton).click(function() {
             stopTimer();
         });
@@ -140,7 +140,7 @@ var screentime = (function() {
 
         if (!warningSounded) {
             console.log("Play sound");
-            $('<embed hidden="true" autoplay="true" loop="false" id="chatAudio" src="/public/assets/media/warning.mp3"></embed>').appendTo('body');
+            $('<embed hidden="true" autoplay="true" loop="false" id="chatAudio" src="/public/assets/media/airhorn.mp3"></embed>').appendTo('body');
             warningSounded = true;
         }
 

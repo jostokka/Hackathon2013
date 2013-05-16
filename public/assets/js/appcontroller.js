@@ -17,7 +17,7 @@
                     progressBar : "div#timerFiller",
                     progressOvertimeBar : "div#overtimerbar",
                     timerObj: "#timer",
-                    seconds: 6
+                    seconds: 600
                 });
 				
 			} else {
