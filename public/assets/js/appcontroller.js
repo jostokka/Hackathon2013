@@ -38,6 +38,7 @@
 		},
 
 		loadTemplate : function(template) {
+         console.log("loading"+template)
 			var self = this;
 			if (self.templates[template]) {
 				return self.templates[template];
