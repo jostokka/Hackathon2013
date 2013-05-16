@@ -8,6 +8,7 @@
 			self.guid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx".replace(/x/g, function() {return Math.floor(Math.random()*16).toString(16).toUpperCase();});
 			self.options = $.extend({}, $.fn.appController.options, options);
 			self.templates = {};
+			Handlebars.registerPartial("template-app-timer", $("#template-app-timer").html());
 			if (self.options.userid > 0) {
 				$(self.options.canvas).html(self.loadTemplate('template-welcome')({}));
 				$("#btnLogout").on('click', function() {
