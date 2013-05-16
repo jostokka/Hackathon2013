@@ -18,6 +18,7 @@
 				$(self.options.canvas).html(self.loadTemplate('template-startreg')({}));
 				$("#btnLogin").on('click', function() {
 					$(self.options.canvas).html(self.loadTemplate('template-register')({}));
+					$(self.options.canvas).trigger('create');
 					$("#btnReg").on('click', function() {
 						self.login($("#useremail").val(), $("#userpassword").val());
 						return false
@@ -40,6 +41,8 @@
 			
 			//self.fetch().done(function(results){
 			//});
+			$(self.options.canvas).trigger('create');
+			
 		},
 
 		loadTemplate : function(template) {
@@ -57,6 +60,7 @@
 		loadContent : function(template) {
 			var self = this;
 			$(self.options.canvas).html(self.loadTemplate(template)({}));
+			$(self.options.canvas).trigger('create');
 		},
 
 		login: function(email, password) {
